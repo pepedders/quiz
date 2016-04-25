@@ -1,8 +1,5 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+body{padding: 5vh 5vw 5vh 5vw; text-align: center; font-family: "Raleway", sans-serif;}
+h1{font-size: 5em;}
+div.formulario{display: inline-block; width: 40vw;}
+input{text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
+input.button{border-radius: 0px; text-size: 1.5em; font-family: "Raleway", sans-serif;}
