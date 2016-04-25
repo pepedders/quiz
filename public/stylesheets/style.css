@@ -3,3 +3,4 @@ h1{font-size: 5em;}
 div.formulario{display: inline-block; width: 40vw;}
 input{text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
 input.button{border-radius: 0px; text-size: 1.5em; font-family: "Raleway", sans-serif;}
+div.profile{width: 20vh; height: 20vh; border-radius: 100%; margin-left: auto; margin-right: auto; background-repeat: no-repeat; background-size: 20vh 20vh; background-position: center;}
