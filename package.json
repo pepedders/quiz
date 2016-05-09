@@ -16,6 +16,12 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "morgan": "~1.6.1",
+    "pg": "^4.4.6",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.19.3",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.1.1"
   }
 }

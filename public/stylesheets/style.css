@@ -1,6 +1,27 @@
-body{padding: 5vh 5vw 5vh 5vw; text-align: center; font-family: "Raleway", sans-serif;}
+
+
+html{position: relative; min-height: 100%}
+body{padding:0; padding-top:50px; text-align: center; font-family: "Raleway", sans-serif; height: 100%;}
 h1{font-size: 5em;}
+
+
+
 div.formulario{display: inline-block; width: 40vw;}
-input{text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
-input.button{border-radius: 0px; text-size: 1.5em; font-family: "Raleway", sans-serif;}
+input{border-top: none; border-left: none; border-right: none; text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
+button{color: black; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5cb85c; border: 1px solid whitesmoke;}
+button:hover{border-bottom: 2px solid black; cursor: pointer;}
+
+
 div.profile{width: 20vh; height: 20vh; border-radius: 100%; margin-left: auto; margin-right: auto; background-repeat: no-repeat; background-size: 20vh 20vh; background-position: center;}
+div.container{height: auto;}
+div.authors{display: inline-block; width: 100%; padding-bottom: 10px; margin-bottom: 60px;}
+div.author{display: inline-block; width: 30%; max-width: 50%;}
+footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px;}
+
+
+.body-link{color: #5bc0de; text-decoration: none;}
+.body-link:hover{color: #5bc0de; text-decoration: underline;}
+.footer-link{color: darkgray; text-decoration: none;}
+.footer-link:hover{color: #5bc0de; text-decoration: underline;}
+.green{color: #5cb85c;}
+.blue{color: #5bc0de;}
