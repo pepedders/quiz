@@ -7,20 +7,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <nav></nav>
+
     <div class="container">
-      <h1 class=title><%= question %></h1>
+      <h2 class=title><%= question %></h2>
       <form class="form" action="/quizes/answer" method="get">
         <input type="text" name="answer" placeholder="Responda aquí"></input>
         <button type="submit">Enviar respuesta</button>
       </form>
     </div>
-    <footer>
-      <a class="footer-link" href="https://github.com/pepedders/quiz">Enlace a la página del proyecto en GitHub</a>
-      &#47;
-      <a class="footer-link" href="/author">Autores del proyecto</a>
-      &#47;
-      <a class="footer-link" href="/">Página principal de Quiz</a>
-    </footer>
+
   </body>
 </html>
