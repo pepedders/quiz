@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Pregunta</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -9,7 +9,11 @@
   <body>
 
     <div class="container">
-      <a href="/quizzes" class="body-link"><h3>Comenzar a jugar!</h3></a>
+      <h2 class=title><%= quiz.question %></h2>
+      <form class="form" action="/quizzes/<%= id %>/check" method="get">
+        <input type="text" name="answer" placeholder="Responda aquí"></input>
+        <button type="submit">Enviar respuesta</button>
+      </form>
     </div>
 
   </body>

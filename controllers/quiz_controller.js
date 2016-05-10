@@ -1,32 +1,40 @@
 // Hacemos que el controlador importe el modelo que hemos creado en models/models.js
 var models = require('../models');
 
-// GET /question
-exports.question = function(req, res, next){
-  models.Quiz.findOne().then(function(quiz){
+// Get /quizzes
+exports.index = function(req, res, next){
+  models.Quiz.findAll().then(function(quizzes){
+      res.render('quizzes/index.ejs', { quizzes: quizzes});
+  }).catch(function(error){ next(error);});
+};
+
+
+// GET /quizzes/:id
+exports.show = function(req, res, next){
+  models.Quiz.findById(req.params.quizId).then(function(quiz){
     if (quiz){
       var answer = req.query.answer || '';
-      res.render('quizes/question', {title: 'pregunta', question: quiz.question, answer: answer});
+      res.render('quizzes/show', { title: 'pregunta', id: req.params.quizId, quiz: quiz, answer: answer});
 
     }
     else{
-      throw new Error('No hay preguntas en la BBDD.');
+      throw new Error('No existe ese quiz en la base de datos.');
     }
   }).catch(function(error){ next(error);});
 };
 
 
-// GET /check
-exports.check = function(req, res, next) {
-  models.Quiz.findOne().then(function(quiz){
+// GET /quizzes/:id/check
+exports.check = function(req, res) {
+  models.Quiz.findById(req.params.quizId).then(function(quiz){
     if (quiz){
       var answer = req.query.answer || '';
       var result = answer === quiz.answer ? 'correcta' : 'incorrecta';
       var color = answer === quiz.answer ? 'green' : 'red';
-      res.render('quizes/answer', { title: 'respuesta', result: result, color: color, answer: answer });
+      res.render('quizzes/result', { title: 'respuesta', result: result, color: color, answer: answer });
     }
     else{
-      throw new Error('No hay preguntas en la BBDD.');
+      throw new Error('No existe ese quiz en la base de datos');
     }
   }).catch(function(error) { next(error); });
 };

@@ -16,7 +16,7 @@ if(!process.env.DATABASE_URL){
   url = "sqlite:///";
   storage = "quiz.sqlite";
 } else {
-  url = process.env.HEROKU_POSTGRESQL_GRAY_URL;
+  url = process.env.DATABASE_URL;
   storage = process.env.DATABASE_STORAGE || "";
 }
 
@@ -28,13 +28,14 @@ var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 sequelize.sync().then(function(){
-  return
-    Quiz.count().then(function(c){
+  return Quiz.count().then(function(c){
       if (c === 0){ // la tabla se inicializa si esta vacia
-        return
-          Quiz.create({ question: '¿Capital de Italia?', answer: 'Roma'}).then(function(){
-            console.log('Base de datos inicializada con datos')});
-      }
+        return Quiz.bulkCreate([{question: '¿Capital de Italia?', answer: 'Roma'},
+                           {question: '¿Capital de Portugal?', answer: 'Lisboa'},
+                           {question: '¿Capital de España?', answer: 'Madrid'},
+                           {question: '¿Capital de Inglaterra?', answer: 'Londres'}
+                          ]).then(function(){console.log('Base de datos inicializada con datos')});
+      }else{console.log('La base de datos ya existe.')}
     });
 }).catch(function(error){
   console.log("Error soncronizando las tablas de la BBDD:", error);

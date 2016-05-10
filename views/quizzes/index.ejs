@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Lista de preguntas</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -9,8 +9,15 @@
   <body>
 
     <div class="container">
-      <h2 class=" <%= color %> ">Respuesta <%= result %></h2>
+      <div class="list-container">
+        <ol>
+          <% for (var i in quizzes){ %>
+            <li>
+              <a class="list-link" href="/quizzes/<%= quizzes[i].id %>"><%= quizzes[i].question %></a>
+            </li>
+          <% } %>
+        </ol>
+      </div>
     </div>
-
   </body>
 </html>
