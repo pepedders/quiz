@@ -16,6 +16,7 @@ exports.show = function(req, res, next){
       var answer = req.query.answer || '';
       res.render('quizzes/show', { title: 'pregunta', id: req.params.quizId, quiz: quiz, answer: answer});
 
+
     }
     else{
       throw new Error('No existe ese quiz en la base de datos.');
@@ -48,7 +49,11 @@ exports.check = function(req, res) {
       var answer = req.query.answer || '';
       var result = answer === quiz.answer ? 'correcta' : 'incorrecta';
       var color = answer === quiz.answer ? 'green' : 'red';
+<<<<<<< HEAD
       res.render('quizzes/result', { title: 'respuesta', result: result, color: color, answer: answer });
+=======
+      res.render('quizes/answer', { title: 'respuesta', result: result, color: color, answer: answer });
+>>>>>>> 472594582424a131f570301fae329bc1a6a36e0c
     }
     else{
       throw new Error('No existe ese quiz en la base de datos');

@@ -36,6 +36,7 @@ sequelize.sync().then(function(){
                            {question: '¿Capital de Inglaterra?', answer: 'Londres'}
                           ]).then(function(){console.log('Base de datos inicializada con datos')});
       }else{console.log('La base de datos ya existe.')}
+
     });
 }).catch(function(error){
   console.log("Error soncronizando las tablas de la BBDD:", error);
