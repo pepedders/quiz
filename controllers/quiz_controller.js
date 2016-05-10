@@ -16,6 +16,7 @@ exports.show = function(req, res, next){
       var answer = req.query.answer || '';
       res.render('quizzes/show', { title: 'pregunta', id: req.params.quizId, quiz: quiz, answer: answer});
 
+
     }
     else{
       throw new Error('No existe ese quiz en la base de datos.');
