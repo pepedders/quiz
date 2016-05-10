@@ -10,10 +10,12 @@
 
     <div class="container">
       <h2 class=title><%= quiz.question %></h2>
-      <form class="form" action="/quizzes/<%= id %>/check" method="get">
-        <input type="text" name="answer" placeholder="Responda aquí"></input>
-        <button type="submit">Enviar respuesta</button>
-      </form>
+      <div class="formulario">
+        <form class="form" action="/quizzes/<%= id %>/check" method="get">
+          <input type="text" name="answer" placeholder="Responda aquí"></input>
+          <button class="responder" type="submit">Enviar respuesta</button>
+        </form>
+      </div>
     </div>
 
   </body>

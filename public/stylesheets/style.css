@@ -7,11 +7,14 @@ h2{font-size: 2.5em;}
 
 
 
-div.formulario{display: inline-block; width: 40vw;}
+div.formulario{display: inline-block; margin-top: 50px;}
 input{border-top: none; border-left: none; border-right: none; text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
-button{color: black; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5cb85c; border: 1px solid whitesmoke;}
-button:hover{border-bottom: 2px solid black; cursor: pointer;}
-
+button.responder{padding-left: 20px; padding-right: 20px; color: white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #f0ad4e; border: 1px solid whitesmoke;}
+button.responder:hover{border-bottom: 2px solid black; cursor: pointer;}
+button.buscar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5bc0de; border: 1px solid whitesmoke;}
+button.buscar:hover{border-bottom: 2px solid black; cursor: pointer}
+input{text-align: left;}
+input:focus{outline-color: transparent; outline-style: none}
 
 div.profile{width: 20vh; height: 20vh; border-radius: 100%; margin-left: auto; margin-right: auto; background-repeat: no-repeat; background-size: 20vh 20vh; background-position: center;}
 div.container{height: auto;}
@@ -24,7 +27,7 @@ footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; tex
 
 
 .body-link{color: #5bc0de; text-decoration: none;}
-.body-link:hover{color: #5bc0de; text-decoration: underline;}
+.body-link:hover{color: darkgray; text-decoration: bold;}
 .footer-link{color: darkgray; text-decoration: none;}
 .footer-link:hover{color: #5bc0de; text-decoration: underline;}
 .list-link{color: #5bc0de; text-decoration: none;}
@@ -32,3 +35,4 @@ footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; tex
 .green{color: #5cb85c;}
 .blue{color: #5bc0de;}
 .red{color: #d9534f;}
+.orange{color: #f0ad4e}

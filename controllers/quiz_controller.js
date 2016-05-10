@@ -23,6 +23,23 @@ exports.show = function(req, res, next){
   }).catch(function(error){ next(error);});
 };
 
+// GET /search?search=...
+exports.search = function(req, res, next){
+  models.Quiz.findAll().then(function(quizzes){
+    var busqueda = req.query.search || '';
+    var patt = new RegExp(busqueda, "i");
+    var searchArray = [];
+    for(var i in quizzes){
+      if(patt.test(quizzes[i].question)){
+        var element = {id:quizzes[i].id, question:quizzes[i].question};
+        searchArray.push(element);
+      }
+    }
+    searchArray.sort();
+    res.render('quizzes/search', { searchArray: searchArray });
+  }).catch(function(error) { next(error); });
+};
+
 
 // GET /quizzes/:id/check
 exports.check = function(req, res) {
