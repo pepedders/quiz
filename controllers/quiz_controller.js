@@ -1,13 +1,13 @@
 // Hacemos que el controlador importe el modelo que hemos creado en models/models.js
 var models = require('../models');
 
-
 // GET /question
 exports.question = function(req, res, next){
   models.Quiz.findOne().then(function(quiz){
     if (quiz){
       var answer = req.query.answer || '';
       res.render('quizes/question', {title: 'pregunta', question: quiz.question, answer: answer});
+
     }
     else{
       throw new Error('No hay preguntas en la BBDD.');
