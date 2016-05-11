@@ -71,6 +71,9 @@ exports.create = function(req, res, next){
   var quiz = models.Quiz.build({ question: req.body.quiz.question, answer: req.body.quiz.answer} );
   // Guarda en db los campos pregunta y respuesta de quiz
   quiz.save({fields: ["question", "answer"]}).then(function(){
+    req.flash('success', 'Quiz creado con éxito');
     res.redirect('/quizzes');
-  }).catch(function(error) { next(error) });
+  }).catch(function(error) {
+    req.flash('error', 'Error al crear un quiz: ' + error.message);
+    next(error) });
 };
