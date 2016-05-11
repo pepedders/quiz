@@ -6,7 +6,7 @@ module.exports = {
       'Quizzes',
       { id:       {type: Sequelize.INTEGER, allowNull: false, primaryKey :true, autoIncrement: true, unique: true},
         question: {type: Sequelize.STRING, validate: { notEmpty: {msg: "Debe introducir una pregunta"}}},
-        answer:   {type: Squelize.STRING, validate: { notEmpty: {msg: "Debe introducir una respuesta"}}},
+        answer:   {type: Sequelize.STRING, validate: { notEmpty: {msg: "Debe introducir una respuesta"}}},
         createdAt:{type: Sequelize.DATE, allowNull: false},
         updatedAt:{type: Sequelize.DATE, allowNull: false}
       },
