@@ -34,8 +34,6 @@ exports.show = function(req, res, next){
     if (quiz){
       var answer = req.query.answer || '';
       res.render('quizzes/show', { title: 'pregunta', id: req.params.quizId, quiz: req.quiz, answer: answer});
-
-
     }
     else{
       throw new Error('No existe ese quiz en la base de datos.');
@@ -73,7 +71,37 @@ exports.create = function(req, res, next){
   quiz.save({fields: ["question", "answer"]}).then(function(){
     req.flash('success', 'Quiz creado con éxito');
     res.redirect('/quizzes');
+  }).catch(Sequelize.ValidationError, function(error){
+    req.flash('error', 'Errores en el formulario: ');
+    for(var i in error.errors){
+      req.flash('error', error.errors[i].value);
+    };
+    res.render('quizzes/new', { quiz: quiz });
   }).catch(function(error) {
     req.flash('error', 'Error al crear un quiz: ' + error.message);
     next(error) });
+};
+
+// GET /quizzes/:id/edit
+exports.edit = function(req, res, next){
+  var quiz = req.quiz;
+  res.render('quizzes/edit', {quiz:quiz});
+};
+
+// PUT /quizzes/:id
+exports.update = function(req, res, next){
+  req.quiz.question = req.body.quiz.question;
+  req.quiz.answer = req.body.quiz.answer;
+  req.quiz.save({fields: ["question", "answer"]}).then(function(quiz){
+    req.flash('success', 'Editado con éxito');
+    res.reditect('/quizzes');
+  }).catch(Sequelize.ValidationError, function(error){
+    req.flash('error', 'Errores en el formulario:');
+    for (var i in error.errors) {
+      req.flash('error', error.errors[i].value);
+    };
+  }).catch(function(error){
+    req.flash('error', 'Error al editar el Quiz: ' + error.message);
+    next(error);
+  });
 };

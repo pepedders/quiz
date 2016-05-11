@@ -12,6 +12,8 @@ button.responder{padding-left: 20px; padding-right: 20px; color: white; border-r
 button.responder:hover{border-bottom: 2px solid black; cursor: pointer;}
 button.add{padding-left: 20px; padding-right: 20px; color: white; border-radius: 0px; font-size: 1.1em; font-family: "Raleway", sans-serif; background-color: #f0ad4e; border: 1px solid whitesmoke;}
 button.add:hover{border-bottom: 2px solid black; cursor: pointer;}
+span.editar{text-decoration: none; color: darkgray; font-size: 0.6em; font-family: "Raleway", sans-serif;}
+span.editar:hover{text-decoration: none; cursor: pointer; color: black;}
 button.buscar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5bc0de; border: 1px solid whitesmoke;}
 button.buscar:hover{border-bottom: 2px solid black; cursor: pointer}
 button.cancelar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #d9534f; border: 1px solid whitesmoke;}
@@ -36,7 +38,8 @@ div.author{display: inline-block; width: 30%; max-width: 50%;}
 footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px;}
 
 
-
+.span-link{text-decoration: none;}
+.span-likn:hover{text-decoration: none;}
 .body-link{color: #5bc0de; text-decoration: none;}
 .body-link:hover{color: darkgray; text-decoration: bold;}
 .footer-link{color: darkgray; text-decoration: none;}

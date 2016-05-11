@@ -21,6 +21,9 @@
           <% for (var i in quizzes){ %>
             <li>
               <a class="list-link" href="/quizzes/<%= quizzes[i].id %>"><%= quizzes[i].question %></a>
+              <a class="span-link" href="/quizzes/<%= quizzes[i].id %>/edit"><span class="editar">Editar</span></a>
+              &#47;
+              <a class="span-link" href="/quizzes/<%= quizzes[i].id %>/?_method=DELETE" onClick="return confirm('Borrar: <%= quizzes[i].question %>')"><span class="editar">Borrar</span></a>
             </li>
           <% } %>
         </ol>

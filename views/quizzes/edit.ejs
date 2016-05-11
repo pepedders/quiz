@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lista de preguntas</title>
+    <title>Editar pregunta</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -9,9 +9,9 @@
   <body>
 
     <div class="container">
-      <h3>Añadir pregunta</h3>
+      <h3>Editar pregunta</h3>
       <div class="formulario">
-        <form class="form" action="/quizzes" method="post">
+        <form class="form" action="/quizzes/<%= quiz.id %>?_method=PUT" method="post">
           <% include _form.ejs %>
         </form>
       </div>
