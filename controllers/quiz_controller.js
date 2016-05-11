@@ -1,5 +1,5 @@
 // Hacemos que el controlador importe el modelo que hemos creado en models/models.js
-var models = require('../models');
+var models = require('../models/index');
 
 // Autoload el quiz asociado a :quizId
 exports.load = function(req, res, next, quizId){
@@ -103,5 +103,15 @@ exports.update = function(req, res, next){
   }).catch(function(error){
     req.flash('error', 'Error al editar el Quiz: ' + error.message);
     next(error);
+  });
+};
+
+// DELETE /quizzes/:id
+exports.destroy = function(req, res, next){
+  req.quiz.destroy().then( function(){
+    req.flash('success', 'Quiz borrado con éxito.');
+    res.redirect('/quizzes');
+  }).catch(function(error){
+    req.flash('error', 'Error al editar el Quiz: ' +error.message);
   });
 };
