@@ -11,13 +11,18 @@ div.formulario{text-align: center; margin-top: 50px;}
 input{border-top: none; border-left: none; border-right: none; text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
 button.responder{padding-left: 20px; padding-right: 20px; color: white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #f0ad4e; border: 1px solid whitesmoke;}
 button.responder:hover{border-bottom: 2px solid black; cursor: pointer;}
+button.add{padding-left: 20px; padding-right: 20px; color: white; border-radius: 0px; font-size: 1.1em; font-family: "Raleway", sans-serif; background-color: #f0ad4e; border: 1px solid whitesmoke;}
+button.add:hover{border-bottom: 2px solid black; cursor: pointer;}
 button.buscar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5bc0de; border: 1px solid whitesmoke;}
 button.buscar:hover{border-bottom: 2px solid black; cursor: pointer}
+button.cancelar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #d9534f; border: 1px solid whitesmoke;}
+button.cancelar:hover{border-bottom: 2px solid black; cursor: pointer}
 input{text-align: left;}
 input:focus{outline-color: transparent; outline-style: none}
 
 div.profile{width: 20vh; height: 20vh; border-radius: 100%; margin-left: auto; margin-right: auto; background-repeat: no-repeat; background-size: 20vh 20vh; background-position: center;}
 div.container{height: auto;}
+div.row{width: 100%; text-align: center;}
 div.list-container{display: inline-block; font-size: 1.5em; text-align: center; margin-left: auto; margin-right: auto;}
 div li{list-style: numbered; text-align: left;}
 div.authors{display: inline-block; width: 100%; padding-bottom: 10px; margin-bottom: 60px;}

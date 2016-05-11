@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de preguntas</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="container">
+      <h3>Añadir pregunta</h3>
+      <div class="formulario">
+        <form class="form" action="/quizzes" method="post">
+        <div class="row">
+          <input id="preg" type="text" name="quiz[question]" value="<%= quiz.question %>" placeholder="Escriba la pregunta"></input>
+        </div>
+        <div class="row">
+          <input id="resp" type="text" name="quiz[answer]" calue="<%= quiz.answer %>" placeholder="Escriba la respuesta"></input>
+        </div>
+          <button class="buscar" type="submit">Guardar</button>
+          <a href="/quizzes"><button class="cancelar"><i class="fa fa-ban" aria-hidden="true"></i></button></a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
