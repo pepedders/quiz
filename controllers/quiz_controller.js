@@ -7,7 +7,7 @@ exports.index = function(req, res, next){
   var reg = new RegExp(' ', 'g', 'i');
   var busqueda = '%' + search.replace(reg, '%') + '%';
   var info = search;
-  models.Quiz.findAll({where: {question: {$like: busqueda}}}).then(function(quizzes){
+  models.Quiz.findAll({where: {question: {$ilike: busqueda}}}).then(function(quizzes){
       quizzes.sort();
       res.render('quizzes/index.ejs', { quizzes: quizzes, info: info});
   }).catch(function(error){ next(error);});
