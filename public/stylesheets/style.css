@@ -7,7 +7,7 @@ h2{font-size: 2.5em;}
 
 
 
-div.formulario{display: inline-block; margin-top: 50px;}
+div.formulario{text-align: center; margin-top: 50px;}
 input{border-top: none; border-left: none; border-right: none; text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
 button.responder{padding-left: 20px; padding-right: 20px; color: white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #f0ad4e; border: 1px solid whitesmoke;}
 button.responder:hover{border-bottom: 2px solid black; cursor: pointer;}
@@ -36,3 +36,4 @@ footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; tex
 .blue{color: #5bc0de;}
 .red{color: #d9534f;}
 .orange{color: #f0ad4e}
+.gray{color: darkgray;}
