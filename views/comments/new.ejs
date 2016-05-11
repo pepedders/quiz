@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Escribir un comentario</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="container">
+      <h3>Escribir un comentario</h3>
+      <div class="formulario">
+        <form class="form" action="/quizzes/<%= quiz.id %>/comments/" method="post">
+          <input type="text" name="comment[text]" placeholder="Escriba aquí" id="comment"></input>
+          <button class="buscar" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

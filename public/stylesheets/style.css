@@ -24,7 +24,6 @@ input:focus{outline-color: transparent; outline-style: none}
 div.profile{width: 20vh; height: 20vh; border-radius: 100%; margin-left: auto; margin-right: auto; background-repeat: no-repeat; background-size: 20vh 20vh; background-position: center;}
 div.container{height: auto;}
 div.row{width: 100%; text-align: center; margin-top: 10px; }
-/*div.message{padding: 10px 10px 0px 10px; position: absolute; width: 30%; top: 5%; left: 65%; text-align: center; border: 1px solid darkgray; background-color: #5bc0de; opacity: 0.8;}*/
 div.message{position: relative; padding: 10px 10px 0px 10px; width: 40%; margin-left: auto; margin-right: auto; display: inline-block; text-align: center; border: 1px solid darkgray; opacity: 0.8;}
 div.message.success{background-color: #5cb85c;}
 div.message.info{background-color: #5bc0de;}
@@ -33,6 +32,7 @@ span.dismiss{position: absolute; top:5%; right: 2%; color: black;}
 span.dismiss:hover{position: absolute; top:5%; right: 2%; color: darkgray;}
 div.list-container{display: inline-block; font-size: 1.5em; text-align: center; margin-left: auto; margin-right: auto; height: 40vh; overflow-y: scroll;}
 div ol li{text-align: left;}
+div ul li{text-align: left;}
 div.authors{display: inline-block; width: 100%; padding-bottom: 10px; margin-bottom: 60px;}
 div.author{display: inline-block; width: 30%; max-width: 50%;}
 footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px;}

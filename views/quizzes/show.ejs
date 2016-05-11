@@ -16,6 +16,17 @@
           <button class="responder" type="submit">Enviar respuesta</button>
         </form>
       </div>
+      <div class="row">
+        <h2>Comentarios:</h2>
+        <div class="list-container">
+          <ul>
+            <% for (var i in quiz.Comments) { %>
+              <li> <%= quiz.Comments[i].text %> </li>
+            <% } %>
+          </ul>
+          <a href="/quizzes/<%= quiz.id %>/comments/new"><button class="add" type="button">Nuevo comentario</button></a>
+        </div>
+      </div>
     </div>
 
   </body>

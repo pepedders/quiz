@@ -1,9 +1,10 @@
 // Hacemos que el controlador importe el modelo que hemos creado en models/models.js
-var models = require('../models/index');
+var models = require('../models');
+var Sequelize = require('sequelize');
 
 // Autoload el quiz asociado a :quizId
 exports.load = function(req, res, next, quizId){
-  models.Quiz.findById(quizId).then(function(quiz){
+  models.Quiz.findById(quizId, { include: [ models.Comment ] }).then(function(quiz){
     if(quiz){
       req.quiz = quiz;
       next();
@@ -12,7 +13,6 @@ exports.load = function(req, res, next, quizId){
     }
   }).catch(function(error) { next(error); });
 };
-
 
 
 // Get /quizzes
@@ -94,7 +94,7 @@ exports.update = function(req, res, next){
   req.quiz.answer = req.body.quiz.answer;
   req.quiz.save({fields: ["question", "answer"]}).then(function(quiz){
     req.flash('success', 'Editado con éxito');
-    res.reditect('/quizzes');
+    res.redirect('/quizzes');
   }).catch(Sequelize.ValidationError, function(error){
     req.flash('error', 'Errores en el formulario:');
     for (var i in error.errors) {
