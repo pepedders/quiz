@@ -33,6 +33,10 @@ router.delete('/quizzes/:quizId(\\d+)',     quizController.destroy);
 router.get('/quizzes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizzes/:quizId(\\d+)/comments',    commentController.create);
 
+
+// Autoload de rutas que utilicen :quizId
+router.param('userId', userController.load); // autoload :quizId
+
 // Definicion de rutas de cuenta
 router.get('/users',                    userController.index);    // listado usuarios
 router.get('/users/:userId(\\d+)',      userController.show);     // ver un usuario

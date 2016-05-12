@@ -36,7 +36,7 @@
           <span class="dismiss"><i class="fa fa-times" aria-hidden="true"></i></span>
           <h3>Errores encontrados:</h3>
             <% for(var i in messages.error) { %>
-              <p> <%= messages.info[error] %> </p>
+              <p> <%= messages.info[i] %> </p>
             <% } %>
         </div>
       <% } %>
@@ -52,7 +52,8 @@
       <a class="footer-link" href="/author">Autores del proyecto</a>
       &#47;
       <a class="footer-link" href="/">Página principal de Quiz</a>
-    </footer>
+      &#47;
+      <a class="footer-link" href="/users">Usuarios</a></footer>
     <script   src="http://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
     <script   src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"   integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI="   crossorigin="anonymous"></script>
     <script src="/javascripts/script.js"></script>

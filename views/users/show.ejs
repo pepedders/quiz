@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Usuario</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="container">
+        <h3 class="subtitle">Usuario</h3>
+        <div class="table-container">
+          <table class="user-table">
+            <tr>
+              <td>
+                <h3>Nombre:</h3>
+              </td>
+              <td>
+                 <h3 class="blue"><%= user.username %></h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>Admin:</h3>
+              </td>
+              <td>
+                <h3 class="blue"><%= user.isAdmin ? "Si" : "No" %></h3>
+              </td>
+            </tr>
+          </table>
+        </div>
+      <div class="row">
+        <a class="span-link" href="/users/<%= user.id %>/edit"><span class="controles">Editar</span></a>
+        <span class="controles">&#47;</span>
+        <a class="span-link" href="/users/<%= user.id %>?_method=DELETE"><span onClick="return confirm('Borrar cuenta del usuario <%= user.username %>')" class="controles">Borrar</span></a>
+        <span class="controles">&#47;</span>
+        <a class="span-link" href="/users"><span class="controles">Volver</span></a>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  function confirmPassword(){
+    var pw1 = document.getElementById('password').value;
+    var pw2 = document.getElementById('confirm_password').value;
+    if(!pw1 || !pw2){
+      alert('Debe rellenar los campos de contraseña y confirmación');
+      return false;
+    }
+    if(pw1 == pw2){
+      return true;
+    } else {
+      alert('Las contraseñas introducidas no coinciden.');
+      return false;
+    }
+  }
+</script>
+
+<div class="row">
+  <% if (!user.id) { %>
+    <input id="username" type="text" name="user[username]" value="<%= user.username %>" placeholder="Nombre de usuario"></input>
+  <% } else { %>
+    <h3>Username: <span class="blue"><%= user.username %></span></h3>
+  <% } %>
+</div>
+<div class="row">
+  <input id="password" type="password" name="user[password]" placeholder="Contraseña"></input>
+</div>
+<div class="row">
+  <input id="confirm_password" type="password" placeholder="Confirmar"></input>
+</div>
+  <button class="buscar" type="submit" onclick="return confirmPassword()">Guardar</button>

@@ -14,6 +14,8 @@ button.add{padding-left: 20px; padding-right: 20px; color: white; border-radius:
 button.add:hover{border-bottom: 2px solid black; cursor: pointer;}
 span.editar{text-decoration: none; color: darkgray; font-size: 0.6em; font-family: "Raleway", sans-serif;}
 span.editar:hover{text-decoration: none; cursor: pointer; color: black;}
+span.controles{text-decoration: none; color: darkgray; font-size: 1em; font-family: "Raleway", sans-serif;}
+span.controles:hover{text-decoration: none; cursor: pointer; color: black;}
 button.buscar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #5bc0de; border: 1px solid whitesmoke;}
 button.buscar:hover{border-bottom: 2px solid black; cursor: pointer}
 button.cancelar{padding-left: 20px; padding-right: 20px; color:white; border-radius: 0px; font-size: 2em; font-family: "Raleway", sans-serif; background-color: #d9534f; border: 1px solid whitesmoke;}
@@ -36,8 +38,12 @@ div ul li{text-align: left;}
 div.authors{display: inline-block; width: 100%; padding-bottom: 10px; margin-bottom: 60px;}
 div.author{display: inline-block; width: 30%; max-width: 50%;}
 footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; padding: 20px;}
+div.table-container{display: inline-block; margin-left: auto; margin-right: auto;}
+table.user-table{text-align: left;}
+td{padding-left: 10px;}
 
-
+.subtitle{font-size: 2em; }
+.admin.list-link{color: #337ab7;}
 .span-link{text-decoration: none;}
 .span-likn:hover{text-decoration: none;}
 .body-link{color: #5bc0de; text-decoration: none;}
@@ -49,5 +55,5 @@ footer{color: darkgray; position: absolute; bottom: 0; left: 0; width: 100%; tex
 .green{color: #5cb85c;}
 .blue{color: #5bc0de;}
 .red{color: #d9534f;}
-.orange{color: #f0ad4e}
+.orange{color: #f0ad4e;}
 .gray{color: darkgray;}

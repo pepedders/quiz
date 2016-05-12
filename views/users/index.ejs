@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de usuarios</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="list-container">
+        <h3>Lista de usuarios</h3>
+        <ol>
+          <% for (var i in users){ %>
+            <li>
+              <a class="list-link <%= users[i].isAdmin ? 'admin' : '' %>" href="/users/<%= users[i].id %>"><%= users[i].username %></a>
+              <a class="span-link" href="/users/<%= users[i].id %>/edit"><span class="editar">Editar</span></a>
+              <span class="editar">&#47;</span>
+              <a class="span-link" href="/users/<%= users[i].id %>/?_method=DELETE" onClick="return confirm('Borrar: <%= users[i].username %>')"><span class="editar">Borrar</span></a>
+            </li>
+          <% } %>
+        </ol>
+      </div>
+      <div class="row">
+        <a href="/users/new"><button class="add" type="button">Crear nuevo usuario</button></a>
+      </div>
+    </div>
+
+  </body>
+</html>
