@@ -10,8 +10,8 @@ module.exports = {
         QuizId:{  type: Sequelize.INTEGER },
         text:  {  type: Sequelize.STRING,  unique: true,
                   validate: { notEmptu: {msg: "Debe rellenar el comentario"}}},
-        createdAt { type: Sequelize.DATE, allowNull: false },
-        updatedAt { type: Sequelize.DATE, allowNull: false}
+        createdAt: { type: Sequelize.DATE, allowNull: false },
+        updatedAt: { type: Sequelize.DATE, allowNull: false }
       },
       { sync: {force: true}
     });

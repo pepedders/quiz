@@ -14,8 +14,8 @@
         <ol>
           <% for (var i in users){ %>
             <li>
-              <% if (session.user) { %>
                 <a class="list-link <%= users[i].isAdmin ? 'admin' : '' %>" href="/users/<%= users[i].id %>"><%= users[i].username %></a>
+              <% if (session.user) { %>
                 <a class="span-link" href="/users/<%= users[i].id %>/edit"><span class="editar">Editar</span></a>
                 <span class="editar">&#47;</span>
                 <a class="span-link" href="/users/<%= users[i].id %>/?_method=DELETE" onClick="return confirm('Borrar: <%= users[i].username %>')"><span class="editar">Borrar</span></a>

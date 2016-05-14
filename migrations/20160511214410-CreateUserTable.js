@@ -10,14 +10,14 @@ module.exports = {
                 unique: true,
               },
         username: { type: Sequelize.STRING,
-                    unique; true,
+                    unique: true,
                     validate: { notEmpty: {msg: "Falta el nombre de usuario"}
                   }},
         password: { type: Sequelize.STRING,
                     validate: { notEmpty: {msg: "Falta la contraseña"}
                   }},
         salt:     { type: Sequelize.STRING},
-        isAdmin   { type: Sequelize.BOOLEAN,
+        isAdmin:   { type: Sequelize.BOOLEAN,
                     defaultValue: false},
         createdAt:{ type: Sequelize.DATE,
                     allowNull: false },
