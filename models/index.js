@@ -36,7 +36,7 @@ var User = sequelize.import(path.join(__dirname, 'user'));
 Comment.belongsTo(Quiz); // Relacion 1 a N entre Quiz y Comments
 Quiz.hasMany(Comment); // Relacion 1 a N entre Quiz y Comments
 User.hasMany(Quiz, {foreignKey: 'AuthorId'}); // Relacion 1 a N entre User y Quiz
-Quiz.belongsTo(User, {as'Author', foreignKey: 'AuthorId'}); // Relacion 1 a N entre User y Quiz
+Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'}); // Relacion 1 a N entre User y Quiz
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 sequelize.sync().then(function(){

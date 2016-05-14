@@ -31,11 +31,13 @@
           </table>
         </div>
       <div class="row">
-        <a class="span-link" href="/users/<%= user.id %>/edit"><span class="controles">Editar</span></a>
-        <span class="controles">&#47;</span>
-        <a class="span-link" href="/users/<%= user.id %>?_method=DELETE"><span onClick="return confirm('Borrar cuenta del usuario <%= user.username %>')" class="controles">Borrar</span></a>
-        <span class="controles">&#47;</span>
-        <a class="span-link" href="/users"><span class="controles">Volver</span></a>
+        <% if (session.user) { %>
+          <a class="span-link" href="/users/<%= user.id %>/edit"><span class="controles">Editar</span></a>
+          <span class="controles">&#47;</span>
+          <a class="span-link" href="/users/<%= user.id %>?_method=DELETE"><span onClick="return confirm('Borrar cuenta del usuario <%= user.username %>')" class="controles">Borrar</span></a>
+          <span class="controles">&#47;</span>
+          <a class="span-link" href="/users"><span class="controles">Volver</span></a>
+        <% } %>
       </div>
     </div>
 

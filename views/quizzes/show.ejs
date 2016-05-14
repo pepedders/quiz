@@ -24,7 +24,9 @@
               <li> <%= quiz.Comments[i].text %> </li>
             <% } %>
           </ul>
-          <a href="/quizzes/<%= quiz.id %>/comments/new"><button class="add" type="button">Nuevo comentario</button></a>
+          <% if (session.user) { %>
+            <a href="/quizzes/<%= quiz.id %>/comments/new"><button class="add" type="button">Nuevo comentario</button></a>
+          <% } %>
         </div>
       </div>
     </div>

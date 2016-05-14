@@ -2,6 +2,15 @@ var models = require('../models');
 var Sequelize = require('sequelize');
 var url = require('url');
 
+exports.loginRequired = function(req, res, next){
+  if(req.session.user){
+    next();
+  } else {
+    res.redirect('/session?redir=' + (req.param('redir') || req.url));
+  }
+};
+
+
 // GET /session -- Formulario de login
 exports.new = function(req, res, next){
   var redir = req.query.redir || url.parse(req.headers.referer || "/").pathname;
