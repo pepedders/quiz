@@ -4,7 +4,10 @@ html{position: relative; min-height: 100%}
 body{padding:0; padding-bottom:50px; text-align: center; font-family: "Raleway", sans-serif; height: 100%;}
 h1{font-size: 5em;}
 h2{font-size: 2.5em;}
-
+nav{width: 100%; position: absolute: top:0; right: 0; height: 50px;}
+div.nav-left{padding-left: 75px; font-size: 20px; position: absolute; left:0; top:0; width: 50%; text-align: left;}
+div.nav-right{padding-right: 75px; font-size: 20px;position: absolute; right:0; top:0; width: 50%; text-align: right;}
+nav a {margin-right: 20px;}
 
 div.formulario{text-align: center; margin-top: 50px;}
 input{border-top: none; border-left: none; border-right: none; text-align: center; font-size: 2em; margin-bottom: 3vh; font-family: "Raleway", sans-serif;}
@@ -50,6 +53,8 @@ td{padding-left: 10px;}
 .body-link:hover{color: darkgray; text-decoration: bold;}
 .footer-link{color: darkgray; text-decoration: none;}
 .footer-link:hover{color: #5bc0de; text-decoration: underline;}
+.nav-link{text-decoration: none; color: darkgray;}
+.nav-link:hover{text-decoration: bold; color: black; border-bottom: 2px solid black;}
 .list-link{color: #5bc0de; text-decoration: none;}
 .list-link:hover{color: darkgray; text-decoration: bold;}
 .green{color: #5cb85c;}
