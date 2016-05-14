@@ -27,7 +27,9 @@ exports.create = function(req, res, next){
 
   authenticate(login, password).then(function(user){
     if(user){
-      req.session.user = { id: user.id, username: user.username };
+      //Crear req.session.user y guardar campos id y username
+      //La sesion se define por la existencia de: req.session.user
+      req.session.user = { id: user.id, username: user.username, isAdmin: user.isAdmin };
       res.redirect(redir); // redirección a redir
     } else {
       req.flash('error', 'La autenticación ha fallado. Reinténtelo otra vez.');
@@ -37,6 +39,36 @@ exports.create = function(req, res, next){
     req.flash('error', 'Se ha producido un error: '+error);
     next(error);
   });
+};
+
+
+// adminAndNotMyselfRequired
+exports.adminAndNotMyselfRequired = function(re, res, next){
+  var isAdmin = req.session.user.isAdmin;
+  var quizAuthorId = req.user.id;
+  var loggedUserId = req.session.user.id;
+
+  if(isAdmin || userId !== loggedUserId){
+    next();
+  } else {
+    console.log('Ruta prohibida: No es el usuario logueado ni un administrador.');
+    res.send(403);
+  }
+};
+
+
+// adminOrMyselfRequired
+exports.adminOrMyselfRequired = function(req, res, next){
+  var isAdmin = req.session.user.isAdmin;
+  var quizAuthorId = req.user.id;
+  var loggedUserId = req.session.user.id;
+
+  if(isAdmin || userId === loggedUserId){
+    next();
+  } else {
+    console.log('Ruta prohibida: No es el usuario logueado ni un administrador.');
+    res.send(403);
+  }
 };
 
 
