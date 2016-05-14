@@ -66,9 +66,10 @@ exports.new = function(req, res){
 
 // POST /quizzes/create
 exports.create = function(req, res, next){
-  var quiz = models.Quiz.build({ question: req.body.quiz.question, answer: req.body.quiz.answer} );
+  var authorId = req.session.user && req.session.user || 0;
+  var quiz = models.Quiz.build({ question: req.body.quiz.question, answer: req.body.quiz.answer, AuthorId : authorId} );
   // Guarda en db los campos pregunta y respuesta de quiz
-  quiz.save({fields: ["question", "answer"]}).then(function(){
+  quiz.save({fields: ["question", "answer", "AuthorId"]}).then(function(){
     req.flash('success', 'Quiz creado con éxito');
     res.redirect('/quizzes');
   }).catch(Sequelize.ValidationError, function(error){
