@@ -20,8 +20,16 @@
         <h2>Comentarios:</h2>
         <div class="list-container">
           <ul>
-            <% for (var i in quiz.Comments) { %>
-              <li> <%= quiz.Comments[i].text %> </li>
+            <% for (var i in quiz.Comments) {
+              var comment = quiz.Comments[i];
+              if (comment.accepted){ %>
+                <li> <%= quiz.Comments[i].text %> </li>
+              <% } else { %>
+                <li>
+                  <%= quiz.Comments[i].text %>
+                  <a class="span-link" href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT"><span class="editar">Aceptar</span></a>
+                </li>
+              <% } %>
             <% } %>
           </ul>
           <% if (session.user) { %>

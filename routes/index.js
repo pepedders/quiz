@@ -33,12 +33,15 @@ router.post('/quizzes',                     sessionController.loginRequired, qui
 router.get('/quizzes/:quizId(\\d+)/edit',   sessionController.loginRequired, quizController.edit);
 router.put('/quizzes/:quizId(\\d+)',        sessionController.loginRequired, quizController.update);
 router.delete('/quizzes/:quizId(\\d+)',     sessionController.loginRequired, quizController.destroy);
-// router.get('/quizzes/search',               quizController.search);
+
+
+// Autoload de comentarios aceptados
+router.param('commentId', commentController.load);
 
 // Definicion de rutas de comentarios
 router.get('/quizzes/:quizId(\\d+)/comments/new', sessionController.loginRequired, commentController.new);
 router.post('/quizzes/:quizId(\\d+)/comments',    sessionController.loginRequired, commentController.create);
-
+router.put('/quizzes/:quizId(\\d+)/comments/:commentId(\\d+)/accept', sessionController.loginRequired, commentController.accept);
 
 // Autoload de rutas que utilicen :quizId
 router.param('userId', userController.load); // autoload :quizId
