@@ -10,8 +10,16 @@ var flash = require('express-flash');
 var methodOverride = require('method-override');
 var routes = require('./routes/index');
 
-
 var app = express();
+
+// En produccion (Heroku) redirijo las peticiones http a https.
+if(app.get('env') === 'production'){
+  app.use(function(req, res, next){
+    if(req.headers['x-forwarded-proto'] !== 'https'){
+      res.redirect('https://' + req.get('Host') + req.url);
+    }
+  });
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
