@@ -2,6 +2,24 @@ var models = require('../models');
 var Sequelize = require('sequelize');
 var url = require('url');
 
+exports.logout = function(req, res, next){
+  if(req.session.user){
+    var currentTime = Date.now();
+    var lastTime = req.session.user.lastTime;
+    console.log('last time is '  + lastTime);
+    console.log('current time is ' + currentTime);
+    if(currentTime > (lastTime + 180000)){
+      delete req.session.user; //Logout borra propiedad user en req.session
+      res.redirect('/session'); //redirect a login
+    } else {
+      req.session.user.lastTime = currentTime;
+      next();
+    }
+  } else { next(); }
+};
+
+
+
 exports.loginRequired = function(req, res, next){
   if(req.session.user){
     next();
@@ -29,7 +47,7 @@ exports.create = function(req, res, next){
     if(user){
       //Crear req.session.user y guardar campos id y username
       //La sesion se define por la existencia de: req.session.user
-      req.session.user = { id: user.id, username: user.username, isAdmin: user.isAdmin };
+      req.session.user = { id: user.id, username: user.username, isAdmin: user.isAdmin, lastTime: Date.now() };
       res.redirect(redir); // redirección a redir
     } else {
       req.flash('error', 'La autenticación ha fallado. Reinténtelo otra vez.');

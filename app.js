@@ -9,6 +9,8 @@ var partials = require('express-partials');
 var flash = require('express-flash');
 var methodOverride = require('method-override');
 var routes = require('./routes/index');
+var sessionController = require('./controllers/session_controller');
+
 
 var app = express();
 
@@ -42,6 +44,8 @@ app.use(function(req, res, next){
   res.locals.session = req.session;
   next();
 });
+
+app.use(sessionController.logout);
 
 app.use('/', routes);
 

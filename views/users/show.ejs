@@ -32,10 +32,10 @@
         </div>
       <div class="row">
         <% if (session.user) { %>
-          ￼￼<% if (session.user.isAdmin || session.user.id === users[i].id){ %>
+          ￼￼<% if (session.user.isAdmin || session.user.id === user.id){ %>
             <a class="span-link" href="/users/<%= user.id %>/edit"><span class="controles">Editar</span></a>
           <% } %>
-          <% if (session.user.isAdmin || session.user.id !== users[i].id){ %>
+          <% if (session.user.isAdmin){ %>
             <span class="controles">&#47;</span>
             <a class="span-link" href="/users/<%= user.id %>?_method=DELETE"><span onClick="return confirm('Borrar cuenta del usuario <%= user.username %>')" class="controles">Borrar</span></a>
           <% } %>
