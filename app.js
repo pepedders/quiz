@@ -1,3 +1,26 @@
+/**
+* Aplicacion express.js (node)
+* Descripcion:
+*  - bin: Directorio con ejecutables: www -  programa de arranque
+*  - package.json: fichero de definición/configuración del paquete
+*  - public: directorios de recursos públicos: imágenes, estilos y librerias Jscript
+*  - routes: enrutador del modelo MVC-R
+*  - views: vistas del modelo MVC-R
+*
+* --> www - programa de arranque: se importa como un modulo y se arranca como servidor en el
+* puerto 3000
+*
+* --> El paquete package.json es un fichero en formato json que define las caracteristicas del
+* paquete NPM de este proyecto. Los paquetes usados en el proyecto son las dependencias que se
+* instalan con npm install. Los scripts son los comandos del proyecto.
+*
+* --> Routes: un Router de express es un MW que permite agrupar otros MWs de atencion a rutas.
+*
+* --> Views: Las vistas EJS se generan en el objeto de respuesta res y se envian al cliente
+**/
+
+
+// Importamos los paquetes como middlewares
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,7 +34,10 @@ var methodOverride = require('method-override');
 var routes = require('./routes/index');
 var sessionController = require('./controllers/session_controller');
 
+// Importamos enrutadores
+var routes = require('./routes/index');
 
+// Creamos la aplicación express.js
 var app = express();
 
 // En produccion (Heroku) redirijo las peticiones http a https.
@@ -23,10 +49,11 @@ if(app.get('env') === 'production'){
   });
 }
 
-// view engine setup
+// Instalamos el generador de vistas EJS
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Instalamos los middlewares que usa la aplicación
 app.use(partials());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -47,20 +74,23 @@ app.use(function(req, res, next){
 
 app.use(sessionController.logout);
 
+// Instalamos enrutadores
+// La ruta "/" de acceso a la página de entrada
 app.use('/', routes);
 
 
-// catch 404 and forward to error handler
+// Gestión del error 404. Lo recogemos en un catch y redirigimos al manejador
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
+// Manejadores de errores
 
-// development error handler
-// will print stacktrace
+// Manejador del error en desarrollo (development)
+// Con este manejadore se imprimira en pantalla el error en la fase de desarrollo
+// para tener informacion acerca de este y poder solucionarlo
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -71,8 +101,9 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// Manejador del error en produccion (production)
+// Con este manejador no se imprimira en la pantalla el error para que no aparezca
+// en la pantalla del usuario en fase de produccion
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {

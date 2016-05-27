@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// www - programa de arranque
+
 /**
  * Module dependencies.
  */
@@ -17,6 +19,7 @@ var options = {
 
 /**
  * Get port from environment and store in Express.
+ * Iniciaremos la aplicacion como servidor en el puerto 3000
  */
 
 var port = normalizePort(process.env.PORT || '3000');
@@ -24,6 +27,7 @@ app.set('port', port);
 
 /**
  * Create HTTP server.
+ * Creamos la aplicacion como servidor en el puerto 3000
  */
 
 var server = app.listen(app.get('port'), function(){
@@ -39,7 +43,7 @@ serverSecure.listen(8443, function(){
  * Listen on provided port, on all network interfaces.
  */
 
-// server.listen(port);
+// server.listen(port); 
 server.on('error', onError);
 server.on('listening', onListening);
 

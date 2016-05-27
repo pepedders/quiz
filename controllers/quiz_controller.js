@@ -2,7 +2,18 @@
 var models = require('../models');
 var Sequelize = require('sequelize');
 
-// Autoload el quiz asociado a :quizId
+
+/*
+*  El parámetro "include:[models.Comment]" de findbyId(...) solicita cargar el array de
+*  comentarios asociados al Quiz a través de la relación 1-a-N entre Quiz y Comment (en la
+*  propiedad quiz.Comments)
+*/
+
+/* AUTOLOAD EL QUIZ ASOCIADO A :quizId
+*  Se ejecuta con todas las peticiones que lleven quizId como parámetro en la ruta. Por ello
+*  para todas estas peticiones se creara el objeto req.quiz al que asociamos un quiz de la base
+*  de datos de los quizzes, y podemos usar tanto el objeto como sus propiedades (id...)
+*/
 exports.load = function(req, res, next, quizId){
   models.Quiz.findById(quizId, { include: [ models.Comment ] }).then(function(quiz){
     if(quiz){
@@ -81,7 +92,7 @@ exports.new = function(req, res){
 
 // POST /quizzes/create
 exports.create = function(req, res, next){
-  var authorId = req.session.user && req.session.user || 0;
+  var authorId = req.session.user && req.session.user.id || 0;
   var quiz = models.Quiz.build({ question: req.body.quiz.question, answer: req.body.quiz.answer, AuthorId : authorId} );
   // Guarda en db los campos pregunta y respuesta de quiz
   quiz.save({fields: ["question", "answer", "AuthorId"]}).then(function(){
@@ -95,7 +106,8 @@ exports.create = function(req, res, next){
     res.render('quizzes/new', { quiz: quiz });
   }).catch(function(error) {
     req.flash('error', 'Error al crear un quiz: ' + error.message);
-    next(error) });
+    next(error)
+  });
 };
 
 // GET /quizzes/:id/edit

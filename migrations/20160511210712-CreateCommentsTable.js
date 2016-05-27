@@ -9,7 +9,7 @@ module.exports = {
                   unique: true},
         QuizId:{  type: Sequelize.INTEGER },
         text:  {  type: Sequelize.STRING,  unique: true,
-                  validate: { notEmptu: {msg: "Debe rellenar el comentario"}}},
+                  validate: { notEmpty: {msg: "Debe rellenar el comentario"}}},
         createdAt: { type: Sequelize.DATE, allowNull: false },
         updatedAt: { type: Sequelize.DATE, allowNull: false }
       },

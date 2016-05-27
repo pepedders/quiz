@@ -1,11 +1,16 @@
 var models = require('../models');
 var Sequelize = require('sequelize');
 
-// Autoload el user asociado a :userId
+/* AUTOLOAD EL USER ASOCIADO A :userId
+*  Del mismo modo, este middleware se ejecutará siempre que la ruta de la petición
+*  contenga :userId como parámetro. De esta manera se creará siempre el objeto req.user
+*  al que asignamos los datos de un usuario extraido de la base de datos. Asi podremos
+*  acceder tanto a este como a sus propiedades (id...)
+*/
 exports.load = function(req, res, next, userId){
   models.User.findById(userId).then(function(user){
       if(user){
-        req.user = user;
+        req.user = user; // Asignamos a req.user la entrada de la base de datos correspondiente
         next();
       } else {
         req.flash('error', 'No existe el usuario con id='+id+'.');
@@ -15,7 +20,12 @@ exports.load = function(req, res, next, userId){
 };
 
 
-// GET /users
+/* GET /users MUESTRA LA LISTA DE USUARIOS REGISTRADOS.
+*  Accede a la base de datos de Usuarios mediante models.User. Una vez tiene el objeto efectua
+*  una consulta mediante findAll() donde ordena los usuarios por su nombre de usuario
+*  {order: ['username']} y después ejecuta una función de callback donde simplemente renderiza
+*  la página a mostrar con la lista de usuarios contenida en el parametro "users".
+*/
 exports.index = function(req, res, next) {
   models.User.findAll({order: ['username']}).then(function(users){
     res.render('users/index', { users: users });
@@ -23,20 +33,28 @@ exports.index = function(req, res, next) {
 };
 
 
-// GET /users/:id
+/* GET /users/:id MUESTRA INFORMACIÓN ACERCA DEL USUARIOS LOGUEADO
+*  Renderiza la vista entregando el parametro req.user a traves de user. Req.user es el objeto que
+*  contiene la información del usuario.
+*/
 exports.show = function(req, res, next){
   res.render('users/show', { user: req.user });
 };
 
 
-// GET /users/new
+/* GET /users/new MUESTRA EL FORMULARIO DE CREACIÓN DE USUARIO
+*  Mediante .build() construye una nueva entrada en la base de datos donde guardará el nombre de usuario
+*  y la contraseña que consigue a través del formulario renderizado.
+*/
 exports.new = function(req, res, next){
   var user = models.User.build({ username: "", password: "" });
   res.render('users/new', { user: user });
 };
 
 
-// POST /users
+/* POST /users  CREA EL USUARIO E INTRODUCE SUS DATOS EN LA BASE DE DATOS
+*
+*/
 exports.create = function(req, res, next){
   var user = models.User.build({ username: req.body.user.username, password: req.body.user.password });
   // El login debe ser unico:
@@ -91,7 +109,9 @@ exports.update = function(req, res, next){
 };
 
 
-// DELETE /users/:id
+/* DELETE /users/:id -- Borra el usuario
+*
+*/
 exports.destroy = function(req, res, next){
   req.user.destroy().then(function(){
     //Borrando usuario logueado

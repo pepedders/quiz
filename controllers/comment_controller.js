@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 // Autoload el comentario asociado a :commentId
 exports.load = function(req, res, next, commentId){
-  models.Comment.findById(commentId).then(function(comment){
+  models.Comment.findById(commentId, { include: [ models.User] }).then(function(comment){
     if(comment){
       req.comment = comment;
       next();
@@ -15,19 +15,26 @@ exports.load = function(req, res, next, commentId){
 
 
 // GET /quizzes/:quizId/comments/new
+// Instancia el formulario de crear comentarios
 exports.new = function(req, res, next){
   var comment = models.Comment.build({text: ""});
   res.render('comments/new', { comment: comment, quiz: req.quiz });
 };
 
 
-// POST /quizzes/:quizId/comments
+/* POST /quizzes/:quizId/comments
+*  Middleware que crea el comentario y lo introduce en la base de datos. Lleva el
+*  parámetro :quizId en la ruta, por lo que la función de autoload de quiz_controller.js
+*  cargará el quiz asociado. Esto nos permite asignar req.quiz.id al campo QuizId
+*/
 exports.create = function(req, res, next){
+  var authorId = req.session.user && req.session.user.id || 0;
   var comment = models.Comment.build(
     { text: req.body.comment.text,
-      QuizId: req.quiz.id
+      QuizId: req.quiz.id,
+      AuthorId: authorId
     });
-  comment.save().then(function(comment){
+  comment.save({fields: ["text", "QuizId", "AuthorId"]}).then(function(comment){
     req.flash('success', 'Comentario creado con éxito. ');
     res.redirect('/quizzes/' + req.quiz.id);
   }).catch(Sequelize.ValidationError, function(error){
@@ -35,7 +42,7 @@ exports.create = function(req, res, next){
     for(var i in error.errors){
       req.flash('error', error.errors[i].value);
     };
-    res.render('comments/new', { comment: comment, quiz: req.quiz});
+    res.render('comments/new', { comment: comment, quiz: req.quiz, users: users});
   }).catch(function(error){
     req.flash('error', 'Error al crear un comentario: ' + error.message);
     next(error);

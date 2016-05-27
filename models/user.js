@@ -22,10 +22,14 @@ module.exports = function(sequelize, DataTypes){
         defaultValue: false
     }
   },
+  /* INSTANCEMETHODS:
+  *  Es una propiedad que permite definir metodos de instancia de la clase User.
+  *  Los objetos que se intercambian con la base de datos deben ser de la clase User.
+  */
   { instanceMethods: {
     verifyPassword: function(password){
       return encryptPassword(password, this.salt) === this.password;
-    }}  
+    }}
   });
 };
 
