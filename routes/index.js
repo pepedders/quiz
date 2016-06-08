@@ -60,9 +60,9 @@ router.delete('/session',       sessionController.destroy);   //destruir sesion
 
 
 // DEFINICION DE RUTAS DE /QUIZZES
-router.get('/quizzes',                      quizController.index);
-router.get('/quizzes/:quizId(\\d+)',        quizController.show);
-router.get('/quizzes/:quizId(\\d+)/check',  quizController.check);
+router.get('/quizzes.:format?',                     	quizController.index);
+router.get('/quizzes/:quizId(\\d+).:format?',       	quizController.show);
+router.get('/quizzes/:quizId(\\d+)/check',            quizController.check);
 /* Los instaladores de middlewares como use, get, put... pueden instalar varios middlewares
 *  que se ejecutarán en serie. get('ruta', MW1, MW2), instala MW1 y MW2. Primero se ejecutará
 *  MW1, que puede pasar el control a MW2 mediante next()

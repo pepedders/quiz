@@ -68,11 +68,19 @@ exports.index = function(req, res, next){
   var search = req.query.search || '';
   var reg = new RegExp(' ', 'g');
   var busqueda = '%' + search.replace(reg, '%') + '%';
+  var jsun = '% %';
   var info = search;
-  models.Quiz.findAll({where: {question: {$like: busqueda}}}).then(function(quizzes){
+  if (req.url != ("/quizzes.json")){
+    models.Quiz.findAll({where: {question: {$like: busqueda}}}).then(function(quizzes){
       quizzes.sort();
       res.render('quizzes/index.ejs', { quizzes: quizzes, info: info});
-  }).catch(function(error){ next(error);});
+    }).catch(function(error){ next(error);});
+  }else {
+    models.Quiz.findAll({where:{question:{$like: jsun}}}).then(function(quizzes){
+      quizzes.sort();
+      return res.json(quizzes);
+    }).catch(function(error){next(error);});
+  }
 };
 
 
