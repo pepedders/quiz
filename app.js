@@ -59,9 +59,14 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// El MW bodyparser.urlencoded(...) genera el objeto req.body.quiz cuando se
+// configura con el parámetro { extended: true }
 app.use(cookieParser());
 app.use(session({ secret: 'Quiz 2016',resave: false,saveUninitialized: true }));
+// Gestion de cookies
 app.use(methodOverride('_method', {methods: ["POST", "GET"]}));
+// Cargamos y configuramos el middleware methodOverride para que detecte
+// el parametro oculto _method=xxx en POST y en GET.
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 

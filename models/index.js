@@ -43,7 +43,7 @@ var User = sequelize.import(path.join(__dirname, 'user'));
 *  Las relaciones se definen con métodos heredados del modelo:
 *    1-a-1: belongsTo()   &   hasOne()
 *    1-a-N: belongsTo()   &   hasMany()
-*    N-a-N: belongsToMany() & hasManu()
+*    N-a-N: belongsToMany() & hasMany()
 *
 */
 
@@ -125,7 +125,6 @@ User.hasMany(Quiz, {foreignKey: 'AuthorId'}); // Relacion 1 a N entre User y Qui
 //                            {question: '¿Capital de Inglaterra?', answer: 'Londres'}
 //                           ]).then(function(){console.log('Base de datos inicializada con datos')});
 //       }else{console.log('La base de datos ya existe.')}
-//
 //     });
 // }).catch(function(error){
 //   console.log("Error soncronizando las tablas de la BBDD:", error);

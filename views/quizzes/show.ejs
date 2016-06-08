@@ -25,7 +25,7 @@
               if (comment.accepted){ %>
                 <li>
                   <%= quiz.Comments[i].text %>
-                  <a class="span-link" href="/users/<%= quiz.Comments[i].AuthorId %>"><span class="editar"><%= users[quiz.Comments[i].AuthorId].username %></span></a>
+                  <a class="span-link" href="/users/<%= quiz.Comments[i].AuthorId %>"><span class="editar"><%= %></span></a>
                 </li>
               <% } else if(session.user && (session.user.isAdmin || (quiz.AuthorId === session.user.id))) { %>
                 <li>
